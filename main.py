@@ -33,7 +33,7 @@ gravatar = Gravatar(app, size=100, rating='g', default='retro', force_default=Fa
 app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URL', 'sqlite:///blog.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-engine = create_engine('sqlite:///blog.db?check_same_thread=False')
+engine = create_engine(getenv('DATABASE_URL', 'sqlite:///blog.db'))
 session = Session(engine)
 
 db = SQLAlchemy(app)
